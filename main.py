@@ -1,4 +1,5 @@
 import sys
+import re
 import json
 from utils import (
     get_page_source,
@@ -40,8 +41,24 @@ if __name__ == "__main__":
     with open("script_data.txt", "w", encoding="utf-8") as f:
         f.write(script_data)
 
-    llm_model = "gemini-2.5-flash-lite"
-    product_data = extract_product_data(script_data, llm_model)
+    # preprocess script_data to remove any noise data like any word that contains "seo" or "schema"
+    script_data = re.sub(r"\bseo\b", "", script_data, flags=re.IGNORECASE)
+    script_data = re.sub(r"\bschema\b", "", script_data, flags=re.IGNORECASE)
+
+    # remove extra whitespace
+    script_data = re.sub(r"\s+", " ", script_data)
+    # remove extra newlines
+    script_data = re.sub(r"\n+", "\n", script_data)
+
+    # remove stop words
+    stop_words = ["the", "and", "is", "in", "to", "a"]
+    script_data = " ".join(
+        word for word in script_data.split() if word.lower() not in stop_words
+    )
+
+    llm_model = "gemini-2.0-flash-lite"
+    temperature = 0.3
+    product_data = extract_product_data(script_data, llm_model, temperature)
     if not product_data:
         print("No product data found.")
         sys.exit(1)

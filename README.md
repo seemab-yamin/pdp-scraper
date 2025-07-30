@@ -11,8 +11,8 @@ A generic Product Details Page(PDP) Scraper to scrape all page variants from any
 
 ## Prompt Designing:
 ### System Prompt
-You are an expert e-commerce products data extraction assistant.
-    You will be given a product details page data from script tags and you need to extract the following information:
+You are a product information extraction expert.
+    I will provide you with JSON data about a product and its variants. Your task is to extract the following information:
     - Product name
     - Price (including currency)
     - SKU
@@ -52,4 +52,4 @@ Please extract the product data as described above and output ONLY a single, wel
 Do not include any explanation or extra text. The output must be valid JSON.
 
 ## LLM Limitations:
-- Output Token Limit is 8k approximately. Example [this](https://www.spacenk.com/uk/makeup/lips/lip-gloss/balm-dotcom-lip-balm-UK200057237.html) webpage data couldn't be processed completed because we ran out of output token and result in an incomplete output. 
+- Output Token Limit is 8192 approximately. Example [this](https://www.spacenk.com/uk/makeup/lips/lip-gloss/balm-dotcom-lip-balm-UK200057237.html) webpage data couldn't be processed completed because we ran out of output token and result in an incomplete output. 

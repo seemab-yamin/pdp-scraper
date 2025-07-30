@@ -63,9 +63,11 @@ def extract_json_from_response(text):
         return None
 
 
-def extract_product_data(script_data, llm_model="gemini-2.0-flash-lite"):
-    system_instruction = """You are an expert e-commerce products data extraction assistant.
-    You will be given a product details page data from script tags and you need to extract the following information:
+def extract_product_data(
+    script_data, llm_model="gemini-2.0-flash-lite", temperature=0.3
+):
+    system_instruction = """You are a product information extraction expert.
+    I will provide you with JSON data about a product and its variants. Your task is to extract the following information:
     - Product name
     - Price (including currency)
     - SKU
@@ -100,7 +102,7 @@ def extract_product_data(script_data, llm_model="gemini-2.0-flash-lite"):
     model = genai.GenerativeModel(
         "gemini-2.0-flash-lite", system_instruction=system_instruction
     )
-    model.temperature = 0.3
+    model.temperature = temperature
     user_prompt = (
         "Raw Input:\n" + script_data + "\n\n"
         "Please extract the product data as described above and output ONLY a single, well-structured JSON object as your response. "
