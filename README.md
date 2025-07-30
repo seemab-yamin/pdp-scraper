@@ -2,6 +2,8 @@
 A generic Product Details Page(PDP) Scraper to scrape all page variants from any PDP. 
 
 ## Test Product Pages:
+- https://www.sephora.com/product/nudestix-mini-beachy-nudes-3pc-kit-P482053
+- https://www.sephora.com/product/fenty-beauty-rihanna-gloss-bomb-stix-high-shine-gloss-stick-P511572
 - https://www.ulta.com/p/macximal-sleek-satin-lipstick-pimprod2047503\
 - https://www.harveynichols.com/amiri/sunset-skate-panelled-suede-sneakers-24401-crem-alabaster-birch-210193/
 - https://www.spacenk.com/uk/makeup/lips/lipstick/insanely-saturated-lip-colour-MUK200048934.html
